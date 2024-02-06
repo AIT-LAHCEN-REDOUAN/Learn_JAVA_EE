@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1><%= "Hello World!" %></h1>
+<p>Hello My Friend</p>
 <br/>
-<a href="hello-servlet">Hello </a>
+<a href="hello-servlet">Hello World !! </a>
 </body>
 </html>
