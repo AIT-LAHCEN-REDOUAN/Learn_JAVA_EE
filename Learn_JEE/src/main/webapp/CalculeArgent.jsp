@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="${pageContext.request.contextPath}/CalculerArgent" class="form-control" method="post">
+    <form action="${pageContext.request.contextPath}/CalculerArgent" class="form-control" method="get">
 
         <label>Montant</label>
         <br>

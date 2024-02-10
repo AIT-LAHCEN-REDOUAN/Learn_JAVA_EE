@@ -1,15 +1,18 @@
 package com.example.learn_jee;
 
-import java.io.*;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
 
 interface CalculerArgents {
     double CalculerMensualite(double Argent, int Dure);
 }
 
-@WebServlet(name = "CalculerArgents", value = "/CalculerArgent")
+@WebServlet(name = "CalculerArgent", value = "/CalculerArgent")
 public class CalculerArgent extends HttpServlet implements CalculerArgents {
     public double montant;
     public int duree;
@@ -18,6 +21,8 @@ public class CalculerArgent extends HttpServlet implements CalculerArgents {
         this.duree = duree;
         this.montant = montant;
     }
+
+    public CalculerArgent(){};
 
     public double CalculerMensualite(double montant, int duree) {
         return montant / duree;
