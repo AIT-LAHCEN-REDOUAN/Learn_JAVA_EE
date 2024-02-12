@@ -8,47 +8,38 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-interface CalculerArgents {
-    double CalculerMensualite(double Argent, int Dure);
-}
+
 
 @WebServlet(name = "CalculerArgent", value = "/CalculerArgent")
-public class CalculerArgent extends HttpServlet implements CalculerArgents {
-    public double montant;
-    public int duree;
+public class CalculerArgent extends HttpServlet  {
 
-    public CalculerArgent(double montant, int duree) {
-        this.duree = duree;
-        this.montant = montant;
-    }
-
-    public CalculerArgent(){};
-
-    public double CalculerMensualite(double montant, int duree) {
-        return montant / duree;
-    }
-
+    private CalculerArgents metier ;
+    private CreditModel modelCredit;
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void  init() throws ServletException{
+        metier =  new CreditMetier();
+        modelCredit = new CreditModel();
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
         double Montant = Double.parseDouble(req.getParameter("Montant"));
         int Duree = Integer.parseInt(req.getParameter("Duree"));
 
-        CalculerArgent NewM = new CalculerArgent(Montant, Duree);
-        req.setAttribute("argent", NewM.toString());
+
+        modelCredit.setDuree(Duree);
+        modelCredit.setMontant(Montant);
+
+        double res =  metier.CalculerMensualite(modelCredit.getMontant(),modelCredit.getDuree());
+
+        modelCredit.setMonsualite(res);
+
+        req.setAttribute("creditModel",new CreditModel());
+
+        req.setAttribute("argent", modelCredit);
 
         // Forwarding to the correct JSP page
         req.getRequestDispatcher("CalculeArgent.jsp").forward(req, resp);
-    }
-    // Implementing doPost method for handling POST requests
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Call doGet method for POST requests
-        doGet(req, resp);
-    }
-    @Override
-    public String toString() {
-        return "le Montant Est : " + CalculerMensualite(this.montant, this.duree);
     }
 }

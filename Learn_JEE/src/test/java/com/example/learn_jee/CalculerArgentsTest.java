@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class CalculerArgentsTest {
 
 
-    private CalculerArgents metier ;
+    private CreditMetier metier ;
 
 
     @BeforeEach
     void setUp() {
 
-        metier = new CalculerArgent();
+        metier = new CreditMetier();
 
     }
 
