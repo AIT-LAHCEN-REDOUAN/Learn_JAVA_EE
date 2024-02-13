@@ -37,6 +37,7 @@ public class CalculerArgent extends HttpServlet  {
 
         req.setAttribute("creditModel",new CreditModel());
 
+
         req.setAttribute("argent", modelCredit);
 
         // Forwarding to the correct JSP page
