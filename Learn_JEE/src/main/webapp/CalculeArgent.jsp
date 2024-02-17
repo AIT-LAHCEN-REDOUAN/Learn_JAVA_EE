@@ -20,7 +20,7 @@
         <label>Montant</label>
         <br>
         <br>
-        <input type="text" class="form-input" name="Montant" placeholder="Entrer le Montant" value="<%= request.getAttribute("argent") != null ? ((CreditModel) request.getAttribute("argent")).getMontant() : "0" %>" />
+        <input type="text" class="form-control" name="Montant" placeholder="Entrer le Montant" value="<%= request.getAttribute("argent") != null ? ((CreditModel) request.getAttribute("argent")).getMontant() : "0" %>" />
         <br>
         <br>
         <label>Dure</label>
