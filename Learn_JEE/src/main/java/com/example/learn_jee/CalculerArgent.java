@@ -5,14 +5,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-
-import java.io.IOException;
 
 
 
@@ -48,5 +46,9 @@ public class CalculerArgent extends HttpServlet  {
 
         // Forwarding to the correct JSP page
         req.getRequestDispatcher("CalculeArgent.jsp").forward(req, resp);
+    }
+    @Override
+    protected void doGet(HttpServletRequest req , HttpServletResponse resp) throws IOException , ServletException{
+        doPost(req,resp);
     }
 }

@@ -54,4 +54,19 @@ public class ProduitDaoImpl implements IProduitDao {
 
         return produits;
     }
+
+    @Override
+    public Produit getProduit(Long id) {
+        return null;
+    }
+
+    @Override
+    public Produit update(Produit p) {
+        return null;
+    }
+
+    @Override
+    public void deleteProduit(Long id) {
+
+    }
 }

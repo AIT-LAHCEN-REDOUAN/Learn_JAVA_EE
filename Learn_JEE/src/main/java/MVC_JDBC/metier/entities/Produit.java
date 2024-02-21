@@ -8,6 +8,17 @@ public class Produit implements Serializable {
     private double prix ;
     private int quantite ;
 
+
+    public Produit(){
+        super();
+    };
+    public Produit(String designation , double prix , int quantite){
+        this.designation = designation ;
+        this.prix = prix ;
+        this.quantite = quantite ;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -40,12 +51,7 @@ public class Produit implements Serializable {
         this.quantite = quantite;
     }
 
-    public Produit(){};
-    public Produit(String designation , double prix , int quantite){
-        this.designation = designation ;
-        this.prix = prix ;
-        this.quantite = quantite ;
-    }
+
 
     @Override
     public String toString(){
