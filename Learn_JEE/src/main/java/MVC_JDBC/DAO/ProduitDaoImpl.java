@@ -21,7 +21,7 @@ public class ProduitDaoImpl implements IProduitDao {
                ps.executeUpdate();
 
                PreparedStatement ps2 = connection.prepareStatement("SELECT MAX(ID) AS MAX_ID FROM produits");
-               ResultSet rs = ps.executeQuery();
+               ResultSet rs = ps2.executeQuery();
                if (rs.next()){
                    p.setId(rs.getLong("MAX_ID"));
                }

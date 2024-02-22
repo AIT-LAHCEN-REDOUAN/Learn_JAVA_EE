@@ -8,12 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="MVC_JDBC.web.ProduitModel" %>
 <%@ page import="MVC_JDBC.metier.entities.Produit" %>
+<%@ page import="java.util.List" %>
 
-<%
-   ProduitModel model ;
-   if (request.getAttribute("model") !=null) model = (ProduitModel) request.getAttribute("model");
-   else model = new ProduitModel();
-%>
+
 
 
 
@@ -34,7 +31,7 @@
         <form action="Chercher.do" method="get">
             <label>Mot Cle</label>
             <br>
-            <input class="form-control" type="text" name="motCle" value="<% model.getMotCle() ;%>" />
+            <input class="form-control" type="text" name="motCle"/>
             <br>
             <button type="submit" class="btn btn-primary">Chercher</button>
         </form>
@@ -46,20 +43,26 @@
                 <th>Prix</th>
                 <th>Quantite</th>
             </tr>
+
+
             <%
-
-                for (Produit p: model.getProduits()){
+                ProduitModel model = (ProduitModel) request.getAttribute("model");
+                if (model != null) {
+                    List<Produit> produits = model.getProduits();
+                    if (produits != null) {
+                        for (Produit produit : produits) {
             %>
-
             <tr>
-                <td> <%= p.getId() %> </td>
-                <td><%= p.getDesignation() %></td>
-                <td><%= p.getPrix() %></td>
-                <td><%= p.getQuantite() %></td>
-                <td><a class="btn btn-danger" href="Supprimer.do?id<%=p.getId()%>">Supprimer</a> </td>
-                <td><a class="btn btn-success" href="Edit.do?id=<%=p.getId()%>">Edit</a></td>
+                <td><%=produit.getId()%></td>
+                <td><%= produit.getDesignation()%></td>
+                <td><%= produit.getPrix()%></td>
+                <td><%= produit.getQuantite()%></td>
             </tr>
-            <% } %>
+            <%
+                        }
+                    }
+                }
+            %>
         </table>
 
     </div>
