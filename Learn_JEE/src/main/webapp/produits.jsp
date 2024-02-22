@@ -15,9 +15,13 @@
    else model = new ProduitModel();
 %>
 
+
+
+
 <html>
 <head>
     <title>Title</title>
+    
 </head>
 <body>
 
@@ -52,8 +56,8 @@
                 <td><%= p.getDesignation() %></td>
                 <td><%= p.getPrix() %></td>
                 <td><%= p.getQuantite() %></td>
-                <td><a href="Supprimer.do?id<%=p.getId()%>">Supprimer</a> </td>
-                <td><a href="Edit.do?id=<%=p.getId()%>">Edit</a></td>
+                <td><a class="btn btn-danger" href="Supprimer.do?id<%=p.getId()%>">Supprimer</a> </td>
+                <td><a class="btn btn-success" href="Edit.do?id=<%=p.getId()%>">Edit</a></td>
             </tr>
             <% } %>
         </table>
